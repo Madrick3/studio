@@ -1,8 +1,8 @@
-# studio
+# madrick/studio
 
-A Project Management Application
+A workflow mobile app written in Dart with Flutter for improving agile development practices.
 
-## Getting Started
+## Google: Flutter getting started
 
 This project is a starting point for a Flutter application.
 
