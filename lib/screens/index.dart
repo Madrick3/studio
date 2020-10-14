@@ -4,11 +4,13 @@ import '../widgets/alertCardContainer.dart';
 import '../widgets/sliverHeadline.dart';
 import '../widgets/taskCardContainer.dart';
 import '../widgets/projectCardContainer.dart';
+import '../services/googleSignIn.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
 
 class Index extends StatefulWidget {
-  Index({Key key, this.title, this.barcode}) : super(key: key);
-  final String title;
-  final String barcode;
+  Index({Key key}) : super(key: key);
   @override
   _IndexState createState() => _IndexState();
 }
@@ -17,6 +19,8 @@ class _IndexState extends State<Index> with SingleTickerProviderStateMixin {
 
   TabController _tabController;
   int _selectedIndex = 0;
+  User user;
+
 
   @override
   void initState() {
@@ -35,9 +39,15 @@ class _IndexState extends State<Index> with SingleTickerProviderStateMixin {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        body: _selectedIndex == 0 ? CustomScrollView(
+        body: isSignedIn == false ? CustomScrollView(
           slivers: <Widget>[
-            AccountBar(tabController: _tabController, accountName: 'Patrick Flaherty', ceh: 125),
+            AccountBar(tabController: _tabController, accountName: 'Not Signed In', ceh: 125),
+            SliverHeadline(title: 'Please Sign in'),
+          ],
+
+        ) : _selectedIndex == 0 ? CustomScrollView(
+          slivers: <Widget>[
+            AccountBar(tabController: _tabController, accountName: 'Placeholder', ceh: 125),
             SliverHeadline(title: 'Alerts'),
             AlertCardContainer(),
             SliverHeadline(title: 'Tasks', subtitle: 'MOI SW'),
@@ -47,12 +57,12 @@ class _IndexState extends State<Index> with SingleTickerProviderStateMixin {
           ],
         ) : _selectedIndex == 1 ? CustomScrollView(
           slivers: <Widget>[
-            AccountBar(tabController: _tabController, accountName: 'Patrick Flaherty', ceh: 125),
+            AccountBar(tabController: _tabController, accountName: 'Placeholder', ceh: 125),
             SliverHeadline(title: 'LOL Not Implemented'),
           ],
         ) : CustomScrollView(
           slivers: <Widget>[
-            AccountBar(tabController: _tabController, accountName: 'Patrick Flaherty', ceh: 125),
+            AccountBar(tabController: _tabController, accountName: 'Placeholder', ceh: 125),
             SliverHeadline(title: 'Schedule'),
           ],
         ),

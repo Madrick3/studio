@@ -1,6 +1,14 @@
 # madrick/studio
 
 A workflow mobile app written in Dart with Flutter for improving agile development practices.
+Jira Project Management to create a project management app: [https://madrick.atlassian.net](https://madrick.atlassian.ne) 
+
+
+## List of connected APIs:
+
+- Firebase (Google User Authentication)
+- SQLite (Data management for users and their projects)
+
 
 ## Google: Flutter getting started
 

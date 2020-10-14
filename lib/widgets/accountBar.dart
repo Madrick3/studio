@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class AccountBar extends StatefulWidget{
   AccountBar({Key key, @required this.tabController, this.accountName, this.ceh}) : super(key: key);
-  TabController tabController;
-  String accountName;
-  double ceh;
+  final TabController tabController;
+  final String accountName;
+  final double ceh;
   @override
   _AccountBarState createState() => _AccountBarState();
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'themes/allThemes.dart';
 import 'screens/auth.dart';
 import 'screens/index.dart';
@@ -14,14 +15,22 @@ class Studio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Studio',
       theme: appTheme.themeData,
-      /*
-      home: Index(
-        title: 'Patrick Flaherty',
-        barcode: 'Dashboard'
-      ), */
-      home: Auth(),
+      home: Navigator(
+        pages: [
+          MaterialPage(
+            key: ValueKey('IndexPage'),
+            child: Index(
+            )
+          ),
+          MaterialPage(
+            key: ValueKey('AuthPage'),
+            child: Auth()
+          )
+        ],
+        onPopPage: (route, result) => route.didPop(result),
+      )
     );
   }
 }
